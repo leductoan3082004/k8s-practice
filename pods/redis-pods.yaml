@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: redis
+    labels:
+        hareta: redis
+spec:
+    containers:
+        - name: redis
+          image: bitnami/redis:latest
+          resources:
+              limits:
+                  memory: "128Mi"
+                  cpu: "500m"
+          env:
+              - name: REDIS_PASSWORD
+                value: "ngogianhan7203"
+          ports:
+              - containerPort: 6379

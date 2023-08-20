@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+    name: mysql
+spec:
+    affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                    - matchExpressions:
+                          - key: kubernetes.io/hostname
+                            operator: In
+                            values:
+                                - pool-ogml6icrz-yquvw
+    containers:
+        - name: mysql
+          image: bitnami/mysql:latest
+          env:
+              - name: MYSQL_ROOT_PASSWORD
+                value: "07022003"
+          ports:
+              - containerPort: 3306
